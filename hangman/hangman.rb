@@ -60,46 +60,47 @@ def get_random_word(filename)
   words[(rand words.length)]
 end
 
-file = ARGV[0] || "test.txt"
+if __FILE__ == $0
+  file = ARGV[0] || "test.txt"
 
-word = get_random_word(file)
+  word = get_random_word(file)
 
-triedChars = []
-solvedChars = word.split("").delete_if { |c| c.match(/^[[:alpha:]]$/)} # set special characters as solved from the beginning
-step = 0
+  triedChars = []
+  solvedChars = word.split("").delete_if { |c| c.match(/^[[:alpha:]]$/)} # set special characters as solved from the beginning
+  step = 0
 
-begin
-  print "\e[H\e[2J"
-  puts display_hangman step
-  puts triedChars.sort.join ", "
-  puts display_word(word, solvedChars)
-  chars = $stdin.gets.strip.upcase.split ""
-  # Allow multiple characters to be entered at the same time
-  chars.each do |char|
-    if display_word(word, solvedChars) != display_word(word, solvedChars + [char])
-      solvedChars << char
-    elsif not triedChars.include?(char) and not solvedChars.include?(char)
-      triedChars << char
-      step += 1
+  begin
+    print "\e[H\e[2J"
+    puts display_hangman step
+    puts triedChars.sort.join ", "
+    puts display_word(word, solvedChars)
+    chars = $stdin.gets.strip.upcase.split ""
+    # Allow multiple characters to be entered at the same time
+    chars.each do |char|
+      if display_word(word, solvedChars) != display_word(word, solvedChars + [char])
+        solvedChars << char
+      elsif not triedChars.include?(char) and not solvedChars.include?(char)
+        triedChars << char
+        step += 1
+      end
     end
+  end while display_word(word, solvedChars) != word and step < 12
+
+  print "\e[H\e[2J"
+  if display_word(word, solvedChars) == word and step < 12
+    puts "  ____  \n" +
+         " |/  |  \n" +
+         " |  \\O/ \n" +
+         " |   |  \n" +
+         " |  / \\ \n" +
+         "/|\\      "
+
+    puts "Glückwunsch, das gesuchte Wort war: " + word
+  else
+    puts display_hangman 12
+    puts "Das gesuchte Wort war: " + word
   end
-end while display_word(word, solvedChars) != word and step < 12
-
-print "\e[H\e[2J"
-if display_word(word, solvedChars) == word and step < 12
-  puts "  ____  \n" +
-       " |/  |  \n" +
-       " |  \\O/ \n" +
-       " |   |  \n" +
-       " |  / \\ \n" +
-       "/|\\      "
-
-  puts "Glückwunsch, das gesuchte Wort war: " + word
-else
-  puts display_hangman 12
-  puts "Das gesuchte Wort war: " + word
 end
-
 #  ____
 # |/  |
 # |   O

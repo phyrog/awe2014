@@ -34,18 +34,20 @@ end
 
 # Outputs the hangman ascii art for the given step
 def display_hangman(step)
-  puts mask_string "  ____  \n" +
-                   " |/  |  \n" +
-                   " |   O  \n" +
-                   " |  /|\\ \n" +
-                   " |  / \\ \n" +
-                   "/|\\      ",
-                   "  4444  \n" +
-                   " 15  6  \n" +
-                   " 1   7  \n" +
-                   " 1  98a \n" +
-                   " 1  b c \n" +
-                   "213      ", step
+  out = mask_string "  ____  \n" +
+                    " |/  |  \n" +
+                    " |   O  \n" +
+                    " |  /|\\ \n" +
+                    " |  / \\ \n" +
+                    "/|\\      ",
+                    "  4444  \n" +
+                    " 15  6  \n" +
+                    " 1   7  \n" +
+                    " 1  98a \n" +
+                    " 1  b c \n" +
+                    "213      ", step
+  puts out
+  out
 end
 
 # Retrieves a random word from the given file with a minimum length of 8 chars

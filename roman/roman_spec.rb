@@ -6,6 +6,10 @@ describe RomanNumber do
     10.to_r.should == RomanNumber.new(10)
   end
 
+  it "should convert a string to a roman number" do
+    "XV".to_r.should == 15.to_r
+  end
+
   it "should return the string representation of the roman number 15" do
     no = 15.to_r
     no.to_s.should == "XV"
@@ -19,6 +23,11 @@ describe RomanNumber do
   it "should return the string representation of the roman number 0" do
     no = 0.to_r
     no.to_s.should == ""
+  end
+
+  it "should return the same number when using to_s.to_r on a roman number" do
+    no = 42.to_r
+    no.to_s.to_r.should == no
   end
 
   it "should convert roman number to int" do

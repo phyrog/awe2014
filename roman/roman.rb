@@ -67,3 +67,9 @@ class RomanNumber
    self < no || self == no
   end
 end
+
+class Integer
+  def to_r
+    RomanNumber.new(self)
+  end
+end

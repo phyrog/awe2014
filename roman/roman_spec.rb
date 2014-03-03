@@ -47,40 +47,40 @@ describe RomanNumber do
   it "should check if two numbers are equal" do
     x = RomanNumber.new(5)
     y = RomanNumber.new(5)
-    (x == y).should == true
+    x.should == y
   end
 
   it "should check if two numbers are unequal" do
     x = RomanNumber.new(5)
     y = RomanNumber.new(23)
-    (x != y).should == true
+    x.should_not == y
   end
 
   it "should check if one number is bigger than the other" do
     x = RomanNumber.new(5)
     y = RomanNumber.new(23)
-    (y > x).should == true
+    y.should > x
   end
 
   it "should check if one number is smaller than the other" do
     x = RomanNumber.new(5)
     y = RomanNumber.new(23)
-    (x < y).should == true
+    x.should < y
   end
 
   it "should check if one number is bigger or equal than the other" do
     x = RomanNumber.new(5)
     y = RomanNumber.new(5)
     z = RomanNumber.new(6)
-    (x >= y).should == true
-    (z >= x).should == true
+    x.should >= y
+    z.should >= x
   end
 
   it "should check if one number is smaller or equal than the other" do
     x = RomanNumber.new(5)
     y = RomanNumber.new(5)
     z = RomanNumber.new(4)
-    (x <= y).should == true
-    (z <= x).should == true
+    x.should <= y
+    z.should <= x
   end
 end

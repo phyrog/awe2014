@@ -12,3 +12,6 @@ It includes only basic functionality without any highscore or settings (apart fr
 The roman directory includes the second task to program a library for roman numbers. The purpose was to get used to TDD (test driven development), so the roman_spec.rb file was written before the actual implementation.
 
 Because the main task was to familiarize with rspec, the actual algorithm to convert an integer to the string representation (and the other way around) was taken from rosettacode.org ([here](http://rosettacode.org/wiki/Roman_numerals/Decode#Ruby) and [here](http://rosettacode.org/wiki/Roman_numerals/Encode#Ruby)).
+
+## Chapter2
+The chapter2 directory includes the second chapter of the rails tutorial from ruby.railstutorial.org
